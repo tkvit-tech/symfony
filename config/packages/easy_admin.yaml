@@ -1,0 +1,51 @@
+#easy_admin:
+#    entities:
+#        # List the entity class name you want to manage
+#        - App\Entity\Product
+#        - App\Entity\Category
+#        - App\Entity\User
+easy_admin:
+    entities:
+#        # List the entity class name you want to manage
+        City:
+            class: App\Entity\City
+            list:
+                fields:
+                    - id
+                    - name
+                    - hotel
+                    - {property: 'image', type: 'image', base_path: '%app.path.city_images%'}
+            search:
+                fields: ['name', 'id']
+            edit:
+                fields:
+                    - name
+                    - description
+                    - {property: 'imageFile', type: 'vich_image'}
+        Hotel:
+            class: App\Entity\Hotel
+            list:
+                fields:
+                    - id
+                    - name
+                    - class
+                    - address
+                    - city
+                    - {property: 'img', type: 'image', base_path: '%app.path.hotel_images%'}
+                filters: ['city']
+            edit:
+                fields:
+                    - name
+                    - class
+                    - description
+                    - address
+                    - slug
+                    - city
+                    - {property: 'imgFile', type: 'vich_image'}
+        Menu:
+            class: App\Entity\Menu
+            list:
+                fields:
+                    - id
+                    - name
+                    - slug

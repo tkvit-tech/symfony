@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% for city in pagination.items %}
+        <div class="row">
+            <div class="float-left"><img src="/images/city/{{ city.image }}" class="rounded img-thumbnail" style="width: 150px; height: 100px"></div><p></p>
+            <div class=""><strong><a href="{{ path('hotel', {'city': city.id}) }}">{{ city.name }}</a></strong><br>{{ city.description }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="container"> {{ knp_pagination_render(pagination) }}</div>
+{% endblock %}

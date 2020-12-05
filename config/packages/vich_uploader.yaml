@@ -1,0 +1,10 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        city_images:
+            uri_prefix: '%app.path.city_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.city_images%'
+        hotel_images:
+            uri_prefix: '%app.path.hotel_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.hotel_images%'

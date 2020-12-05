@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}!{% endblock %}
+
+{% block body %}
+    <div class="container">
+            <div class="row">
+                <div class="float-left"><img src="/images/hotel/{{ hotel.img }}" class="rounded img-thumbnail"></div><p>&nbsp;</p>
+            </div>
+            <div class="row">
+                <div class=""><strong><a href="">{{ hotel.name }}</a></strong><br>Категория - {{ hotel.class }}<br>Адрес - {{ hotel.address }}</div>
+            </div><p>&nbsp;</p>
+            <div class="row">
+                <div class="">{{ hotel.description }}</div>
+            </div>
+    </div>
+{% endblock %}

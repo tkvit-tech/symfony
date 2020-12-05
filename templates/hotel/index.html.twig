@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% for hotel in hotels %}
+            <div class="row">
+                <div class="float-left"><img src="/images/hotel/{{ hotel.img }}" class="rounded img-thumbnail" style="width: 150px; height: 100px"></div><p>&nbsp;</p>
+                <div class=""><strong><a href="{{ path('hotel_desc', {'hotel_id': hotel.id}) }}">{{ hotel.name }}</a></strong><br>Категория - {{ hotel.class }}<br>Адрес - {{ hotel.address }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

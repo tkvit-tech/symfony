@@ -1,0 +1,33 @@
+version: '3.3'
+volumes:
+  mysql:
+
+services:
+  nginx:
+    build:
+      context: ./docker/nginx
+    volumes:
+      - ./:/var/www/html/hotel
+    ports:
+      - 8002:80
+    links:
+      - php-fpm
+
+  php-fpm:
+    build:
+      context: ./docker/php-fpm
+    volumes:
+      - ./:/var/www/html/hotel
+    links:
+      - mysql
+
+  mysql:
+    container_name: symfony_mysql
+    image: library/mariadb:10.4.12
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=hotel
+    volumes:
+      - mysql:/var/lib/mysql
