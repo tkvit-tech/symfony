@@ -10,6 +10,7 @@ use App\Entity\Hotel;
 use App\Entity\HotelRoom;
 use App\Entity\Review;
 use App\Form\ReviewType;
+use App\Entity\Gallery;
 
 class HotelController extends AbstractController
 {
@@ -33,6 +34,7 @@ class HotelController extends AbstractController
         $rooms = $this->getDoctrine()->getRepository(HotelRoom::class)->findBy(['hotel' => $hotel_id]);
         $services = $this->getDoctrine()->getRepository(Hotel::class)->findServices($hotel_id);
         $reviews = $this->getDoctrine()->getRepository(Review::class)->findBy(['hotel' => $hotel_id], ['id' => 'DESC']);
+        $gallery = $this->getDoctrine()->getRepository(Gallery::class)->findBy(['hotel' => $hotel_id]);
 
         $review = new Review();
         $form = $this->createForm(ReviewType::class, $review);
@@ -51,6 +53,7 @@ class HotelController extends AbstractController
             'services' => $services,
             'review_form' => $form->createView(),
             'reviews' => $reviews,
+            'gallery' => $gallery,
         ]);
 
     }

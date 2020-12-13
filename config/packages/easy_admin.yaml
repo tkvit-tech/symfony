@@ -71,3 +71,15 @@ easy_admin:
             form:
                 fields:
                     - name
+        Gallery:
+            class: App\Entity\Gallery
+            list:
+                fields:
+                    - id
+                    - {property: 'img', type: 'image', base_path: '/images/hotel/gallery'}
+                    - hotel
+                filters: ['hotel']
+            form:
+                fields:
+                    - hotel
+                    - {property: 'imageFile', type: 'vich_image'}
