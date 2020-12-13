@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Hotel;
+use App\Entity\Service;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -59,6 +60,19 @@ class HotelRepository extends ServiceEntityRepository
     }
     public function findHotel($hotel_id){
         return $this->createQueryBuilder('h')
+            ->andWhere('h.id = :val')
+            ->setParameter('val', $hotel_id)
+//            ->orderBy('h.name', 'ASC')
+//            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function findServices($hotel_id)
+    {
+        return $this->createQueryBuilder('h')
+            ->select('h.id, s.name')
+            ->innerJoin('h.service', 's')
             ->andWhere('h.id = :val')
             ->setParameter('val', $hotel_id)
 //            ->orderBy('h.name', 'ASC')

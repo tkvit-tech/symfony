@@ -31,6 +31,8 @@ easy_admin:
                     - class
                     - address
                     - city
+                    - room
+                    - service
                     - {property: 'img', type: 'image', base_path: '%app.path.hotel_images%'}
                 filters: ['city']
             edit:
@@ -41,6 +43,7 @@ easy_admin:
                     - address
                     - slug
                     - city
+                    - service
                     - {property: 'imgFile', type: 'vich_image'}
         Menu:
             class: App\Entity\Menu
@@ -49,3 +52,22 @@ easy_admin:
                     - id
                     - name
                     - slug
+        Rooms:
+            class: App\Entity\HotelRoom
+            list:
+                fields:
+                    - id
+                    - name
+                    - description
+                    - price
+                    - hotel
+                filters: ['hotel']
+        Service:
+            class: App\Entity\Service
+            list:
+                fields:
+                    - id
+                    - name
+            form:
+                fields:
+                    - name
