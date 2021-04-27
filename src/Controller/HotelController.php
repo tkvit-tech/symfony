@@ -54,6 +54,7 @@ class HotelController extends AbstractController
             'review_form' => $form->createView(),
             'reviews' => $reviews,
             'gallery' => $gallery,
+            'test' => 'test',
         ]);
 
     }
